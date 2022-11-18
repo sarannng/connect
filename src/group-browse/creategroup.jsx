@@ -35,7 +35,11 @@ function CreateGroup(){
         <div className="mt-5 row">< Button style={{ background: "green" }}>Submit for approval</Button></div>
 
          </div>
-         
+
+         <div className="col-lg-6 text-center">
+            <h1>Some fancy image</h1>
+         </div>
+      
         </div>    
         </Container> 
         </>

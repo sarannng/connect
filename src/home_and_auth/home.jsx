@@ -1,8 +1,21 @@
 import React from "react";
 import Header from "../reusable_comp/header";
 import { Button, Card, Container, Image } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { db } from "../firebase-config"; 
+import { async } from "@firebase/util";
+import { deleteDoc, doc, collection, addDoc} from "firebase/firestore";
+
+
 
 function Home(){
+
+    async function test ()   {  
+        await  addDoc(collection(db, "cities"), {
+            name: "Tokyo",
+            country: "Japan"
+          });
+    }
     return(
     <> 
         <Header/> 
@@ -24,7 +37,7 @@ function Home(){
                     Join in the group
                 </Card.Body>
 
-                <Button>Explore</Button>
+                <Button><Link to ={'browse-groups'}>Explore</Link></Button>
             </Card>
             </div>
             
@@ -34,7 +47,7 @@ function Home(){
                     Create your own group
                 </Card.Body>
 
-                <Button>Create</Button>
+                <Button onClick={test}><Link to ={'create-group'}>Create</Link></Button>
             </Card>
             </div>
         </div>
