@@ -8,6 +8,7 @@ import Groups from './group-browse/groups';
 import CreateGroup from './group-browse/creategroup';
 import {Route, Routes, Link,    BrowserRouter as Router} from 'react-router-dom';
 import Notfound from './reusable_comp/notfound';
+import GroupDetails from './group-browse/group_details';
 
 function App() {
   return (
@@ -21,10 +22,16 @@ function App() {
          <Router>
 
          <Routes>
-            <Route path="/" exact element ={<Home/>}/>
-            <Route path="browse-groups" exact element ={<Groups/>}/>
-            <Route path="create-group" exact element ={ <CreateGroup/>}/>
- 
+            
+            <Route path = "/" exact element ={<Home/>}/>
+            
+            <Route path = "browse-groups"     element ={<Groups/>}> 
+            
+            </Route>
+            <Route path = "browse-groups/group-details/:did"  element = {<GroupDetails/>}/>
+            
+            <Route path = "create-group"   element ={ <CreateGroup/>}/>
+            
             <Route path = "*" element = {<Notfound/>}/>
          </Routes>
          </Router>

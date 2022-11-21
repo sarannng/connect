@@ -11,10 +11,14 @@ import { deleteDoc, doc, collection, addDoc} from "firebase/firestore";
 function Home(){
 
     async function test ()   {  
+        console.log("presses1");
         await  addDoc(collection(db, "cities"), {
             name: "Tokyo",
             country: "Japan"
           });
+
+          
+        console.log("presses2");
     }
     return(
     <> 
