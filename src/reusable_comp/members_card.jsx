@@ -69,9 +69,9 @@ function MembersCard(){
                 </div>
         
                 <div className="col-lg-10">
-                <Card.Title>doc.data.name</Card.Title>
+                <Card.Title>{doc.data.name}</Card.Title>
               <Card.Text>
-                doc.data.email
+                {doc.data.email}
               </Card.Text>
                  </div>
        
