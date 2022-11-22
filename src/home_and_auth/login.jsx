@@ -4,9 +4,17 @@ import { Button, Card, Container, Form } from "react-bootstrap";
 function Login()
 {
     return (
-        
          <>
-       <Card>
+
+       <div className="row center">
+          <div className=" text-center mb-3">
+            <h2>Login here</h2>
+          </div>
+        <div className="col-lg-12">
+        <div >
+       <Container  >
+       <div className="row">
+       <Card style={{ width: '50rem' }}>
         <Card.Body>
         <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -20,16 +28,22 @@ function Login()
         <Form.Control type="password" placeholder="Password" />
       </Form.Group>
        
+      <div className="text-center">
       <Button variant="primary" type="submit">
         Submit
       </Button>
+      </div>
     </Form>
         </Card.Body>
        </Card>
+       </div>
+       </Container>
+       </div>
+        </div>
+       </div>
+       
 
-        </>
-    
-        
+        </>        
     );
 }
 
