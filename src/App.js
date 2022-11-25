@@ -10,6 +10,8 @@ import {Route, Routes, Link,    BrowserRouter as Router} from 'react-router-dom'
 import Notfound from './reusable_comp/notfound';
 import GroupDetails from './group-browse/group_details';
 import Signup from './home_and_auth/signup';
+import MyGroups from './group-browse/my-groups';
+import MyaccGroupDetails from './group-browse/myacc_group_descreption';
 
 function App() {
   return (
@@ -29,7 +31,9 @@ function App() {
             <Route path = ":uid/browse-groups"     element ={<Groups/>}> 
             </Route>
             <Route path = ":uid/browse-groups/group-details/:did"  element = {<GroupDetails/>}/>
-            <Route path = "create-group"   element ={ <CreateGroup/>}/>
+            <Route path = ":uid/my-groups/group-details/:did"  element = {<MyaccGroupDetails/>}/>
+            <Route path = ":uid/create-group"   element ={ <CreateGroup/>}/>
+            <Route path = ":uid/my-groups"   element ={ <MyGroups/>}/>
             <Route path = "login" element ={<Login/>}/>
             <Route path = "signup" element ={<Signup/>}/>
             

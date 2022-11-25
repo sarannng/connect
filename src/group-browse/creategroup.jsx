@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Container, FloatingLabel, Form } from "react-bootstrap";
 import { db } from "../firebase-config";
 import { useState } from "react";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 
 function CreateGroup(){
    const [groupname, setgroupname] = useState('');
    const [groupdes, setgroupdes] = useState('');
    const [groupimg, setgroupimg] = useState('');
+   const [groupcreatorid, setgroupcreatorid] = useState('');
+   
+   useEffect(()=>{
+    var path = window.location.pathname.split("/")[1];
+    console.log(path);
+    setgroupcreatorid(path);
+   }, [])
+
+
 
   async function createGroup(){
      const groupdata = { 
@@ -15,8 +24,10 @@ function CreateGroup(){
       'group_des': groupdes,
       'group_image': groupimg,
     }
+     const docid =  (await addDoc(collection(db, 'groups'), {})).id
+    await setDoc(doc(db,'groups', docid), groupdata);
 
-    await addDoc(collection(db,'groups'), groupdata);
+    await addDoc(collection(db, 'user', groupcreatorid, 'my_groups'), {group_id: docid});
   }
 
   function changehandler_groupname(event){

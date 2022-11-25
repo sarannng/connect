@@ -35,6 +35,7 @@ function Signup(){
         const did =   (await addDoc(collection(db, "user"), {})).id;
         setuserdocid(did);
         console.log(did);
+        createuserIfnotExist();
         return;
         
     }
@@ -105,13 +106,15 @@ function Signup(){
           </DropdownButton> */}
         
        <div className="text-center">
-       <Button onClick={createuserIfnotExist} variant="primary"  >
-         <Link to = {{
+       <Link to = {{
                 pathname: "/" + userdocid,
 
              }} >
-                Details Submit</Link>
+       <Button onClick={getdocid} variant="primary"  >
+        
+                Details Submit
        </Button>
+       </Link>
        </div>
      </Form>
          </Card.Body>

@@ -1,3 +1,4 @@
+import { getDefaultNormalizer } from "@testing-library/react";
 import { addDoc, collection, doc, getDoc, getDocs, onSnapshot, setDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { Button, Card, Image } from "react-bootstrap";
@@ -6,19 +7,27 @@ import { db } from "../firebase-config";
 function MembersCard(){
 
     const [membersdata, setmembersdata] = useState([]);
-
+    const [membercount, setmembercount] = useState('');
     useEffect(()=>{
         var path =   window.location.pathname
         var groupid = path.split("/").pop();
-        onSnapshot(collection(db,"groups", groupid, "group_members"), snapshot => {
+        console.log(membersdata.length );
+
+        getData();
+            
+    }, []);
+
+   async function getData(){
+    var path =   window.location.pathname
+        var groupid = path.split("/").pop();
+        await  onSnapshot(collection(db,"groups", groupid, "group_members"), snapshot => {
+            setmembercount(snapshot.docs.length)
             setmembersdata(snapshot.docs.map((doc) => ({
               id: doc.id,
               data :  doc.data()
             })))
           } )
-    
-           console.log(membersdata)
-    }, [])
+    }
 
     async function joingroup(){
         var path =   window.location.pathname
@@ -50,7 +59,7 @@ function MembersCard(){
             <div className="row">
                 <div className="col-lg-6">
 
-                Member Count  343
+                Member Count   {membercount} 
                 </div>
                 <div className="col-lg-6">
      
@@ -85,4 +94,4 @@ function MembersCard(){
     )
 }
 
-export default MembersCard; 
+export default MembersCard;     

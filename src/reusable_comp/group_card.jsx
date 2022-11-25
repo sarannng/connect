@@ -5,9 +5,10 @@ import { Link } from "react-router-dom";
 import { db } from "../firebase-config";
 
 function GroupCard(props){
+
      function testdoc(){  console.log( getDoc(doc(db, "groups", 'E42qIMdiH9KGP4Iv0oDa'))  )}
         const [parm, setparm] =  useState("group-details/")
-    
+
         function parms(docid){
             setparm(parm+docid);
         
@@ -33,6 +34,8 @@ function GroupCard(props){
                 { doc.data.group_des}
                 </Container>
             </Card.Text>
+
+           x
                 
              <div className="row"> 
               
